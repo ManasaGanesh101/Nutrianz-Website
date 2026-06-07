@@ -22,5 +22,6 @@ html, body, #root {
 html {
   scroll-behavior: smooth;
   overflow-anchor: none;
+  zoom:0.85;
 }
 
