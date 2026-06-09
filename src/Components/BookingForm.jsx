@@ -133,7 +133,6 @@ function BookingForm(){
                 filterDate={isAllowedDay}
                 placeholderText="dd/mm/yyyy"
                 dateFormat="dd/MM/yyyy"
-                portalId="root"
                 className="border border-[#D5DBCC] rounded-lg px-4 py-2 w-full"
             />
 
