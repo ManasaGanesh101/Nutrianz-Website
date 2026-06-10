@@ -14,7 +14,7 @@ function BookingForm(){
     const [phone, setPhone] = useState("")
     const [service, setService] = useState("")
     const [time, setTime] = useState("")
-
+    const [loading, setLoading] = useState(false)
     const [date, setDate] = useState(null)
 
 
@@ -25,42 +25,43 @@ function BookingForm(){
 
     const [showModal, setShowModal] = useState(false)
     const handleSubmit = async () => {
+    if (!firstName || !lastName || !email || !phone || !service || !date || !time) {
+        alert("Please fill in all fields before booking.")
+        return
+    }
 
-        if (!firstName || !lastName || !email || !phone || !service || !date || !time) {
-            alert("Please fill in all fields before booking.")
-            return
-        }
+    const timeValue = parseInt(time.replace(":", ""))
+    if (timeValue < 900 || timeValue > 1700) {
+        alert("Please select a time between 9:00 AM and 5:00 PM.")
+        return
+    }
 
-        const timeValue = parseInt(time.replace(":", ""))
-        if (timeValue < 900 || timeValue > 1700) {
-            alert("Please select a time between 9:00 AM and 5:00 PM.")
-            return
-        }
+    setLoading(true)
 
-        try {
-            
-            const response = await fetch("/api/book", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    firstName,
-                    lastName,
-                    email,
-                    phone,
-                    service,
-                    date: date.toISOString(),
-                    time,
-                }),
-            })
-            
-            if (!response.ok) throw new Error("Booking failed")
-            setShowModal(true)
-            
+    try {
+        const response = await fetch("/api/book", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                firstName,
+                lastName,
+                email,
+                phone,
+                service,
+                date: date.toISOString(),
+                time,
+            }),
+        })
 
-        } catch (error) {
-            alert("Something went wrong. Please try again.")
-            console.error(error)
-        }
+        if (!response.ok) throw new Error("Booking failed")
+        setShowModal(true)
+
+    } catch (error) {
+        alert("Something went wrong. Please try again.")
+        console.error(error)
+    } finally {
+        setLoading(false)
+    }
 }
 
     return(
