@@ -38,7 +38,7 @@ function BookingForm(){
         }
 
         try {
-            setShowModal(true)
+            
             const response = await fetch("/api/book", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -52,9 +52,9 @@ function BookingForm(){
                     time,
                 }),
             })
-
+            
             if (!response.ok) throw new Error("Booking failed")
-
+            setShowModal(true)
             
 
         } catch (error) {
