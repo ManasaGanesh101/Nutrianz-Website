@@ -23,7 +23,7 @@ function App() {
       <Header />
       <Intro />
       <div id="about"><About /></div>
-      <div><Timeline /></div>
+      {/*<div><Timeline /></div>*/}
       <div id="services"><Services /></div>
       <div id="book"><BookingForm /></div>
       <div id="contact"><Contact /></div>
