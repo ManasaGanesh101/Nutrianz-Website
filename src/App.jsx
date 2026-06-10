@@ -9,6 +9,10 @@ import Press from './Components/Press.jsx'
 import About from './Components/About.jsx'
 import Timeline from './Components/Timeline.jsx'
 import Footer from './Components/Footer.jsx'
+import WhatsAppButton from './Components/WhatsAppButton.jsx'
+
+
+
 
 
 function App() {
@@ -24,6 +28,7 @@ function App() {
       <div id="book"><BookingForm /></div>
       <div id="contact"><Contact /></div>
       <Press />
+      <WhatsAppButton />
       <Footer />
     </div>
   )
