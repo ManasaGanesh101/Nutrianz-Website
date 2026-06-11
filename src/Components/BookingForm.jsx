@@ -102,7 +102,7 @@ function BookingForm(){
                 email,
                 phone,
                 service,
-                date: date.toISOString(),
+                date: date.toLocaleDateString("en-CA"),
                 time,
             }),
         })
@@ -187,7 +187,6 @@ function BookingForm(){
                 selected={date}
                 onChange={(date) => setDate(date)}
                 filterDate={(day) => isAllowedDay(day) && !isDayFullyBooked(day)}
-                placeholderText="dd/mm/yyyy"
                 dateFormat="dd/MM/yyyy"
                 className="border border-[#D5DBCC] rounded-lg px-4 py-2 w-full"
             />
