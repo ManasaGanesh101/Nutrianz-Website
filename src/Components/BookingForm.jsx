@@ -57,20 +57,20 @@ function BookingForm(){
     return slots
     }
 
-    const isSlotBooked = (slotTime) => {
-  if (!date) return false
-  const selectedDate = date.toLocaleDateString("en-CA")
-  return bookedSlots.some(
-    (b) => b.date === selectedDate && b.time === slotTime
-  )
-}
+        const isSlotBooked = (slotTime) => {
+    if (!date) return false
+    const selectedDate = date.toLocaleDateString("en-CA")
+    return bookedSlots.some(
+        (b) => b.date === selectedDate && b.time === slotTime
+    )
+    }
 
-const isDayFullyBooked = (day) => {
-  const slots = generateSlots()
-  const dayStr = day.toLocaleDateString("en-CA")
-  const bookedOnDay = bookedSlots.filter((b) => b.date === dayStr)
-  return bookedOnDay.length >= slots.length
-}
+    const isDayFullyBooked = (day) => {
+    const slots = generateSlots()
+    const dayStr = day.toLocaleDateString("en-CA")
+    const bookedOnDay = bookedSlots.filter((b) => b.date === dayStr)
+    return bookedOnDay.length >= slots.length
+    }
 
     const isAllowedDay = (date) => {
         const day = date.getDay()
@@ -181,7 +181,7 @@ const isDayFullyBooked = (day) => {
                 </select>
 
             {/* preferred date picker */}
-            <p className="text-xs text-gray-400">All times are in Sydney time (AEST/AEDT)</p>
+            <p className="text-xs text-gray-400 text-center">All times are in Sydney time (AEST/AEDT)</p>
             <div className="flex gap-2">
 
                 <DatePicker
