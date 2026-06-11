@@ -60,10 +60,10 @@ export default async function handler(req, res) {
   });
 
   // 3. Create Google Calendar Event
-const { zonedTimeToUtc } = await import("date-fns-tz")
+const { fromZonedTime } = await import("date-fns-tz")
 
 const sydneyDateTime = `${date}T${time}:00`
-const startUtc = zonedTimeToUtc(sydneyDateTime, "Australia/Sydney")
+const startUtc = fromZonedTime(sydneyDateTime, "Australia/Sydney")
 const endUtc = new Date(startUtc.getTime() + 45 * 60 * 1000)
 
 const calendar = google.calendar({ version: "v3", auth: authClient });
