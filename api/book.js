@@ -60,22 +60,23 @@ export default async function handler(req, res) {
   });
 
   // 3. Create Google Calendar Event
-  const calendar = google.calendar({ version: "v3", auth: authClient });
-  const eventDate = new Date(date);
-  const [hours, minutes] = time.split(":");
-  eventDate.setHours(parseInt(hours), parseInt(minutes));
-  const endDate = new Date(eventDate);
-  endDate.setHours(endDate.getHours() + 1);
+const { zonedTimeToUtc } = await import("date-fns-tz")
 
-  await calendar.events.insert({
-    calendarId: process.env.GOOGLE_CALENDAR_ID,
-    requestBody: {
-      summary: `Booking - ${firstName} ${lastName}`,
-      description: `Service: ${service}\nPhone: ${phone}\nEmail: ${email}`,
-      start: { dateTime: eventDate.toISOString() },
-      end: { dateTime: endDate.toISOString() },
-    },
-  });
+const sydneyDateTime = `${date}T${time}:00`
+const startUtc = zonedTimeToUtc(sydneyDateTime, "Australia/Sydney")
+const endUtc = new Date(startUtc.getTime() + 45 * 60 * 1000)
+
+const calendar = google.calendar({ version: "v3", auth: authClient });
+
+await calendar.events.insert({
+  calendarId: process.env.GOOGLE_CALENDAR_ID,
+  requestBody: {
+    summary: `Booking - ${firstName} ${lastName}`,
+    description: `Service: ${service}\nPhone: ${phone}\nEmail: ${email}`,
+    start: { dateTime: startUtc.toISOString() },
+    end: { dateTime: endUtc.toISOString() },
+  },
+});
 
   return res.status(200).json({ success: true });
 }

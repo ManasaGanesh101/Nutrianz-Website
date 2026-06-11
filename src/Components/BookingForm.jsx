@@ -181,6 +181,7 @@ const isDayFullyBooked = (day) => {
                 </select>
 
             {/* preferred date picker */}
+            <p className="text-xs text-gray-400">All times are in Sydney time (AEST/AEDT)</p>
             <div className="flex gap-2">
 
                 <DatePicker
@@ -191,7 +192,7 @@ const isDayFullyBooked = (day) => {
                 placeholderText="dd/mm/yyyy"
                 className="border border-[#D5DBCC] rounded-lg px-4 py-2 w-full"
             />
-
+                
                 <select
                 value={time}
                 onChange={(e) => setTime(e.target.value)}
@@ -211,6 +212,7 @@ const isDayFullyBooked = (day) => {
                 </select>
                 
             </div>
+            
             
             <button 
                 onClick={handleSubmit} 
