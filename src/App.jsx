@@ -18,7 +18,6 @@ import WhatsAppButton from './Components/WhatsAppButton.jsx'
 function App() {
   
   return (
-    
     <div>
       <Header />
       <Intro />

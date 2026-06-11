@@ -1,10 +1,12 @@
 import Booking from '../Components/Booking.jsx'
 import FadeUp  from '../Components/FadeUp.jsx'
 import DatePicker from "react-datepicker"
-
 import "react-datepicker/dist/react-datepicker.css"
 import ThankYouModal from '../Components/ThankYouModal.jsx'
 import { useState } from "react"
+import { useEffect } from "react"
+
+
 
 function BookingForm(){
 
@@ -16,7 +18,59 @@ function BookingForm(){
     const [time, setTime] = useState("")
     const [loading, setLoading] = useState(false)
     const [date, setDate] = useState(null)
+    const [bookedSlots, setBookedSlots] = useState([])
+    const [loadingSlots, setLoadingSlots] = useState(true)
 
+    useEffect(() => {
+    const fetchBookings = async () => {
+        try {
+        const res = await fetch("/api/getBookings")
+        const data = await res.json()
+        setBookedSlots(data.bookings)
+        } catch (error) {
+        console.error("Failed to fetch bookings", error)
+        } finally {
+        setLoadingSlots(false)
+        }
+    }
+    fetchBookings()
+    }, [])
+
+    const generateSlots = () => {
+    const slots = []
+    let hour = 9
+    let minute = 0
+    while (hour < 17 || (hour === 16 && minute === 15)) {
+        const h = hour.toString().padStart(2, "0")
+        const m = minute.toString().padStart(2, "0")
+        const value = `${h}:${m}`
+        const period = hour < 12 ? "AM" : "PM"
+        const displayHour = hour > 12 ? hour - 12 : hour
+        const label = `${displayHour}:${m} ${period}`
+        slots.push({ value, label })
+        minute += 45
+        if (minute >= 60) {
+        minute -= 60
+        hour += 1
+        }
+    }
+    return slots
+    }
+
+    const isSlotBooked = (slotTime) => {
+    if (!date) return false
+    const selectedDate = date.toISOString()
+    return bookedSlots.some(
+        (b) => b.date === selectedDate && b.time === slotTime
+    )
+    }
+
+    const isDayFullyBooked = (day) => {
+    const slots = generateSlots()
+    const dayISO = day.toISOString()
+    const bookedOnDay = bookedSlots.filter((b) => b.date === dayISO)
+    return bookedOnDay.length >= slots.length
+    }
 
     const isAllowedDay = (date) => {
         const day = date.getDay()
@@ -132,20 +186,29 @@ function BookingForm(){
                 <DatePicker
                 selected={date}
                 onChange={(date) => setDate(date)}
-                filterDate={isAllowedDay}
+                filterDate={(day) => isAllowedDay(day) && !isDayFullyBooked(day)}
                 placeholderText="dd/mm/yyyy"
                 dateFormat="dd/MM/yyyy"
                 className="border border-[#D5DBCC] rounded-lg px-4 py-2 w-full"
             />
 
-                <input
-                type="time"
+                <select
                 value={time}
                 onChange={(e) => setTime(e.target.value)}
-                min="09:00"
-                max="17:00"
-                className="border border-[#D5DBCC] rounded-lg px-4 py-2 w-full" 
-                />
+                className="border border-[#D5DBCC] rounded-lg px-4 py-2 w-full"
+                disabled={!date}
+                >
+                <option value="" disabled>Select a time</option>
+                {generateSlots().map((slot) => (
+                    <option
+                    key={slot.value}
+                    value={slot.value}
+                    disabled={isSlotBooked(slot.value)}
+                    >
+                    {isSlotBooked(slot.value) ? `${slot.label} (Booked)` : slot.label}
+                    </option>
+                ))}
+                </select>
                 
             </div>
             
