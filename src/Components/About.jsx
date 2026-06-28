@@ -1,7 +1,6 @@
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef } from "react"
-import aboutPic from "../assets/madhupic.jpeg"
 import aboutPicAI from "../assets/madhupicAI.png"
 
 const bioLines = [
