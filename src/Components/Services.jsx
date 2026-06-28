@@ -1,66 +1,169 @@
-import { 
-  IconClipboardHeart,
-  IconToolsKitchen2,
+import {
+  IconHeart,
+  IconUsers,
   IconScale,
   IconHeartRateMonitor,
-  IconBuilding
-} from '@tabler/icons-react'
+  IconBabyCarriage,
+  IconRun,
+  IconActivityHeartbeat,
+  IconSalad,
+  IconLeaf,
+  IconHeartbeat,
+} from "@tabler/icons-react"
 
-import ServicesCard from '../Components/ServicesCard.jsx'
-import FadeUp from './FadeUp.jsx'
+import ServicesCard from "../Components/ServicesCard.jsx"
+import FadeUp from "./FadeUp.jsx"
+import { motion } from "framer-motion"
 
-function Services(){
-    const services = [
-  {
-    title: "Initial Consultation",
-    desc: "A comprehensive first session to assess your health goals, medical history, and dietary habits. Together we build the foundation for your nutrition journey.",
-    duration: "45 min",
-    icon: <IconClipboardHeart />
-  },
-  {
-    title: "Personalised Meal Planning",
-    desc: "Custom meal plans designed around your lifestyle, food preferences, and health goals. No generic plans — everything is tailored specifically to you.",
-    duration: "60 min",
-    icon: <IconToolsKitchen2 />
-  },
+function Services() {
+  const accentColors = ["#C8704C", "#9CAF88", "#D9A24B", "#7A9E9F"]
+  const services = [
   {
     title: "Weight Management",
-    desc: "Structured and sustainable programs for healthy weight loss or gain. Focus on long-term habits rather than quick fixes.",
-    duration: "75 min",
-    icon: <IconScale />
+    desc: {
+      intro: "Evidence-based support for:",
+      points: [
+        "Sustainable weight loss and weight gain",
+        "Protein and meal planning",
+        "Healthy habit formation",
+      ],
+    },
+    icon: <IconScale size={32} stroke={1.8} />,
   },
   {
-    title: "Disease-Specific Nutrition",
-    desc: "Specialised dietary management for conditions including diabetes, PCOS, thyroid disorders, and high cholesterol. Evidence-based guidance to help you manage your health.",
-    duration:"90 min",
-    icon: <IconHeartRateMonitor />
+    title: "Diabetes & Prediabetes",
+    desc: {
+      intro: "Personalised nutrition support for:",
+      points: [
+        "Blood glucose management",
+        "Balanced meal planning",
+        "Diabetes prevention and support",
+      ],
+    },
+    icon: <IconHeartRateMonitor size={32} stroke={1.8} />,
   },
   {
-    title: "Corporate Wellness Talks",
-    desc: "Engaging nutrition seminars and workshops tailored for workplaces. Empower your team with the knowledge to make healthier choices every day.",
-    duration: "90 min",
-    icon: <IconBuilding />
+    title: "PCOS & Hormonal Health",
+    desc: {
+      intro: "Nutrition strategies focused on:",
+      points: [
+        "Insulin resistance support",
+        "Weight management strategies",
+        "Hormonal health and symptom management",
+      ],
+    },
+    icon: <IconHeart size={32} stroke={1.8} />,
   },
-]
-    return (
-    <div className="px-6 md:px-20 py-16 bg-[#faf9f7]">
-        <FadeUp>
-        <h2 className="font-ephesis text-4xl text-center text-gray-700 mb-10">Services Offered</h2>
-        </FadeUp>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service, index) => (
-                <FadeUp key={index} delay={index * 0.15}>
-                <ServicesCard
-                    key={index}
-                    title={service.title}
-                    desc={service.desc}
-                    icon={service.icon}
-                    duration={service.duration}
-                />
-                </FadeUp>
-            ))}
+  {
+    title: "Pregnancy & Postpartum",
+    desc: {
+      intro: "Nutrition guidance for:",
+      points: [
+        "Healthy pregnancy nutrition",
+        "Managing common nutrition concerns",
+        "Postpartum recovery and nourishment",
+      ],
+    },
+    icon: <IconBabyCarriage size={32} stroke={1.8} />,
+  },
+  {
+    title: "Healthy Ageing",
+    desc: {
+      intro: "Supporting healthy ageing through:",
+      points: [
+        "Muscle and bone health",
+        "Cognitive health and wellbeing",
+        "Chronic disease prevention",
+      ],
+    },
+    icon: <IconLeaf size={32} stroke={1.8} />,
+  },
+  {
+    title: "Sports Nutrition",
+    desc: {
+      intro: "Nutrition plans tailored for:",
+      points: [
+        "Performance nutrition",
+        "Recovery and hydration strategies",
+        "Training and competition support",
+      ],
+    },
+    icon: <IconRun size={32} stroke={1.8} />,
+  },
+];
+
+  return (
+    <section className="relative px-6 md:px-16 lg:px-24 py-24 bg-[#FAF6F1] overflow-hidden select-none">
+
+      
+<motion.div
+  className="absolute -top-40 left-10 w-64 h-64 bg-[#F3D9CE] rounded-full opacity-70"
+  animate={{
+    y: ["0%", "140%"],
+  }}
+  transition={{
+    duration: 25,
+    repeat: Infinity,
+    repeatType: "reverse",
+    ease: "easeInOut"
+  }}
+/>
+<motion.div
+  className="absolute -top-40 left-150 w-70 h-70 bg-[#FFE4C4] rounded-full opacity-70"
+  animate={{
+    y: ["0%", "120%"],
+  }}
+  transition={{
+    duration: 15,
+    repeat: Infinity,
+    repeatType: "reverse",
+    ease: "easeInOut"
+  }}
+/>
+<motion.div
+  className="absolute top-1/3 right-20 w-40 h-40 bg-white rounded-full opacity-80"
+  animate={{
+    y: [0, -500, 0],
+  }}
+  transition={{
+    duration: 30,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+/>
+
+      <FadeUp>
+        <div className="relative text-center mb-14">
+          <p className="uppercase tracking-[0.3em] text-sm text-[#C8704C] mb-3">
+            Services
+          </p>
+
+          <h2 className="font-cormorant text-4xl md:text-5xl font-semibold text-gray-800">
+            Areas of Expertise
+          </h2>
+
+          <p className="max-w-2xl mx-auto mt-4 text-gray-600">
+            Personalised nutrition care designed to support your health goals,
+            lifestyle, and long-term wellbeing.
+          </p>
         </div>
-    </div>
-)
+      </FadeUp>
+
+      <div className="relative grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {services.map((service, index) => (
+        <FadeUp key={index} delay={index * 0.08}>
+            <ServicesCard
+            title={service.title}
+            desc={service.desc}
+            icon={service.icon}
+            accent={accentColors[index % accentColors.length]}
+            />
+        </FadeUp>
+        ))}
+      </div>
+      
+    </section>
+  )
 }
+
 export default Services

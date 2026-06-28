@@ -10,10 +10,7 @@ import About from './Components/About.jsx'
 import Timeline from './Components/Timeline.jsx'
 import Footer from './Components/Footer.jsx'
 import WhatsAppButton from './Components/WhatsAppButton.jsx'
-
-
-
-
+import WhyNutrianz from './Components/WhyNutrianz.jsx'
 
 function App() {
   
@@ -24,6 +21,7 @@ function App() {
       <div id="about"><About /></div>
       {/*<div><Timeline /></div>*/}
       <div id="services"><Services /></div>
+      <WhyNutrianz />
       <div id="book"><BookingForm /></div>
       <div id="contact"><Contact /></div>
       <Press />

@@ -1,10 +1,10 @@
 import FadeUp from '../Components/FadeUp.jsx'
 function Contact(){
     return(
-        <div className="flex flex-col items-center justify-content gap-3 p-3 w-full">
+        <div className="flex flex-col items-center justify-content gap-3 py-10 px-20  w-full">
        
        <FadeUp>
-        <p className="font-bold text-2xl md:text-4xl text-[#848F6D] text-justify">Contact Us</p>
+        <p className="font-bold text-2xl md:text-4xl text-cocoa text-justify">Contact Us</p>
         </FadeUp>
 
        
@@ -48,11 +48,11 @@ function Contact(){
             </svg>
             <div>
                 <p>Linkedin</p>
-                <a href="https://www.linkedin.com/in/madhu-madhusmitha-krishnamurthy-a3b3921a">Madhusmitha Krishnamurthy</a>
+                <a href="https://www.linkedin.com/in/madhu-madhusmitha-krishnamurthy-a3b3921a">Madhu Krishnamurthy</a>
             </div>
         </div>
         </FadeUp>
-
+        
         </div>
     )
 }

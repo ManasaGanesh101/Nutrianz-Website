@@ -3,7 +3,13 @@
 @theme {
   --font-ephesis: "Ephesis", cursive;
   --font-times: "Times New Roman", Times, serif;
+  --color-sage: #8D9B6A;
+  --color-blush: #E8DFE0;
+  --color-slate: #8A9EA7;
+  --color-sand: #DAB692;
+  --color-cocoa: #8F5B34;
 }
+
 #root {
   width: 100%;
   max-width: 100%;

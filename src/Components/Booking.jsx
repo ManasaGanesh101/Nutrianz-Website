@@ -11,7 +11,7 @@ function Booking(){
             <ul className="space-y-4">
                 <FadeUp delay={0.2}>
                 <li className="flex items-start gap-4 ">
-                    <span className="w-8 h-8 bg-[#9CAF88] rounded-full text-white flex items-center justify-center">1</span>
+                    <span className="w-8 h-8 min-w-8 min-h-8 shrink-0 bg-sand rounded-full text-white flex items-center justify-center">1</span>
                     <div className="flex flex-col">
                     <p>Submit your request</p>
                     <p className="text-gray-500 text-sm">Fill in the form with 
@@ -21,8 +21,8 @@ function Booking(){
                 </FadeUp>
 
                 <FadeUp delay={0.3}>
-                <li className="flex items-center gap-4">
-                    <span className="w-8 h-8 bg-[#9CAF88] rounded-full text-white flex items-center justify-center">2</span>
+                <li className="flex items-start gap-4">
+                    <span className="w-8 h-8 min-w-8 min-h-8 shrink-0 bg-sand rounded-full text-white flex items-center justify-center shrink-0">2</span>
                     <div className="flex flex-col">
                     <p>Confirmation Email</p>
                     <p className="text-gray-500 text-sm">You'll receive a confirmation email within 24 hours.</p>
@@ -32,11 +32,11 @@ function Booking(){
                 </FadeUp>
 
                 <FadeUp delay={0.4}>
-                <li className="flex items-center gap-4">
-                    <span className="w-8 h-8 bg-[#9CAF88] rounded-full text-white flex items-center justify-center">3</span>
+                <li className="flex items-start gap-4">
+                    <span className="w-8 h-8 min-w-8 min-h-8 shrink-0 bg-sand rounded-full text-white flex items-center justify-center">3</span>
                     <div className="flex flex-col">
                     <p>Your session</p>
-                    <p className="text-gray-500 text-sm">Attend your appointment in person or via telehealth.</p>
+                    <p className="text-gray-500 text-sm">Flexible consultation options are available, including online and in-person appointments.</p>
                     </div>
                 </li>
                 </FadeUp>

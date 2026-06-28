@@ -121,9 +121,9 @@ function BookingForm(){
     return(
         <>
         <ThankYouModal isOpen={showModal} onClose={() => setShowModal(false)} />
-        <div className="flex flex-col justify-content items-center gap-6 p-5 bg-[#faf9f7]">
-        <p className="font-bold text-2xl md:text-4xl text-[#848F6D] text-justify">Book an Appointment</p>
-        <p className="text-gray-500 text-xs md:text-md lg:text-lg">Ready to take the first step? Fill in the form below and I'll be in touch
+        <div className="flex flex-col justify-content items-center gap-6 p-20 md:p-30 bg-[#FAF6F1]">
+        <p className="font-bold text-2xl md:text-4xl text-cocoa text-center">Book an Appointment</p>
+        <p className="text-gray-500 text-xs md:text-md lg:text-lg md:text-justify">Ready to take the first step? Fill in the form below and I'll be in touch
             to confirm your session
         </p>
         <div className="flex flex-col md:flex-row gap-8">
@@ -217,7 +217,7 @@ function BookingForm(){
             <button 
                 onClick={handleSubmit} 
                 disabled={loading}
-                className="border p-3 rounded-md bg-[#848F6D] text-white text-lg disabled:opacity-50 flex items-center justify-center gap-2"
+                className="border p-3 rounded-md bg-cocoa text-white text-lg disabled:opacity-50 flex items-center justify-center gap-2"
             >
                 {loading ? (
                     <>

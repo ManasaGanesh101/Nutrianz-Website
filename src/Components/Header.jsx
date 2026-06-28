@@ -4,6 +4,8 @@ import { useState, useEffect } from "react"
 function Header(){
     const [menuOpen, setMenuOpen] = useState(false)
     const [scrolled, setScrolled] = useState(false)
+    const navColor = scrolled ? "text-black" : "text-[#EEDEC5]"
+    const underlineColor = scrolled ? "bg-black" : "bg-[#EEDEC5]"
 
     useEffect(() => {
         const handleScroll = () => {
@@ -13,29 +15,30 @@ function Header(){
         return () => window.removeEventListener("scroll", handleScroll)
     }, [])
     
+
     return(
         <header className={`flex items-center justify-between px-4 py-4 md:px-10 md:py-6 fixed w-full top-0 z-50 transition-all duration-300 ${
-            scrolled ? "bg-white/80 backdrop-blur-md shadow-sm" : "bg-transparent"
+            scrolled ? "bg-[#EEDEC5]/80 backdrop-blur-md shadow-sm" : "bg-transparent "
         }`}>
-            <div className="font-ephesis text-4xl text-black">Nutrianz</div>
+            <div className={`font-ephesis text-5xl drop-shadow-[0_3px_8px_rgba(0,0,0,0.45)] ${scrolled ? "text-black" : "text-[#F7F1E7] font-bold"}`} >Nutrianz</div>
             
-            {/* Desktop nav - your existing styling */}
-            <div className="hidden sm:flex sm:gap-3 md:gap-8 lg:gap-10">
-                <a href="#about" className="relative group pb-1 text-black transition-colors duration-300">
+            {/* Desktop nav existing styling */}
+            <div className="hidden  items-center sm:flex sm:gap-3 md:gap-10 lg:gap-14">
+                <a href="#about" className={`md:text-lg relative group pb-1  transition-colors duration-300 ${navColor}`}>
                         About
-                    <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-black transition-all duration-300 group-hover:w-full" />
+                    <span className={`absolute bottom-0 left-0 w-0 h-[2px] transition-all duration-300 group-hover:w-full ${underlineColor}`} />
                 </a>
-                <a href="#services" className="relative group pb-1 text-black transition-colors duration-300">
+                <a href="#services" className={`md:text-lg relative group pb-1 transition-colors duration-300 ${navColor}`}>
                         Services
-                    <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-black transition-all duration-300 group-hover:w-full" />
+                    <span className={`absolute bottom-0 left-0 w-0 h-[2px] transition-all duration-300 group-hover:w-full ${underlineColor}`} />
                 </a>
-                <a href="#contact" className="relative group pb-1 text-black transition-colors duration-300">
-                         Contact
-                    <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-black transition-all duration-300 group-hover:w-full" />
-                </a>
-                <a href="#book" className="relative group pb-1 text-black transition-colors duration-300">
-                        Book
-                    <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-black transition-all duration-300 group-hover:w-full" />
+                <a href="#book" className={`rounded-full h-10 px-6 flex items-center justify-center font-medium transition-all duration-300 hover:scale-105
+                        ${
+                            scrolled
+                                    ? "text-black border-1 border-black/30 bg-black/5 hover:bg-black/10"
+                                    : "text-[#F7F1E7] border-1 border-white/60 bg-white/10 hover:bg-white/20"
+                        }
+                `}> Book an Appointment
                 </a>
             </div>
 
